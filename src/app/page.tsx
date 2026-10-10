@@ -1,16 +1,41 @@
 import Banner from "@/components/Banner";
 import Marque from "@/components/Marque";
 import Image from "next/image";
+import Link from "next/link";
 
-export default async function Home() {
+interface Cards{
+  
+    id: number
+    slug: string
+    nameBn: string
+    category: string
+    categoryNameBn: string
+    categoryIcon: string
+    unit: string
+    image: string
+    today: number
+    yesterday: number
+    lastWeek: number
+    lastMonth: number
+    change: {
+        dir: "up" | "down" | "flat"
+        pct: number
+    }
+
+}
+
+export default async function Home({card} : {card:Cards}) {
   const res = await fetch("https://api.api-store.workers.dev/api/bazardor/products")
   const data = await res.json()
+
+
   return (
     <div className="bg-base-300">
       <Marque></Marque>
       <Banner></Banner>
 
 
+    <Link href={`/details/${data.id}`}>
       {/* increse prices */}
       <div className="mt-10">
         <h2 className="text-2xl font-bold">▲ আজ দাম বেড়েছে</h2>
@@ -81,7 +106,7 @@ export default async function Home() {
             </div>
           ))}
         </div>
-      </div>
+      </div></Link>
 
 
     </div>
