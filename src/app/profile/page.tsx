@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation';
 import React from 'react';
 
 const ProfilePage = () => {
-const router = useRouter()
+    const router = useRouter()
     const { data: session } = authClient.useSession()
     const user = session?.user
 
@@ -12,6 +12,16 @@ const router = useRouter()
         await authClient.signOut()
         router.push('/signin')
     }
+
+    const handleUpdateProfile = async (e: React.SubmitEvent<HTMLElement>) => {
+        e.preventDefault()
+        const formData = new FormData(e.target);
+        const newUserData = Object.fromEntries(formData.entries()) as {name: string}
+        await authClient.updateUser({
+            ...newUserData,
+        })
+    }
+
     return (
         <div>
             <h2>আমার প্রোফাইল</h2>
@@ -30,6 +40,16 @@ const router = useRouter()
                 </button>
 
             </div>
+            <form onSubmit={handleUpdateProfile}>
+
+                <fieldset className="fieldset">
+                    <label className="label" htmlFor="name">Name</label>
+                    <input type="text" id="name" className="input" placeholder="Name" name = "name"/>
+                    <button type="submit" className="btn text-white bg-red-700 mt-4 ">
+            Update Profile
+          </button>
+                </fieldset>
+            </form>
         </div>
     );
 };

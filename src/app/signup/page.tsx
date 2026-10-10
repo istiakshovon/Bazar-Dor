@@ -29,6 +29,17 @@ if(error){
 }
 }
 
+const handleGoogleSignIn = async () => {
+ const data = await authClient.signIn.social({
+    provider: "google",
+  });
+}
+
+const handleGithubSignIn = async () => {
+     const data = await authClient.signIn.social({
+    provider: "github",
+})}
+
     return (
         <div>
              <form onSubmit={onSubmit}>
@@ -47,6 +58,8 @@ if(error){
   <button type="submit" className="btn btn-neutral mt-4">sign up</button>
 </fieldset>
            </form>
+            <button onClick={handleGoogleSignIn} className='btn'>Sign up with Google</button>
+            <button onClick={handleGithubSignIn} className='btn'>Sign up with Github</button>
         </div>
     );
 };
