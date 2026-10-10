@@ -1,12 +1,16 @@
 'use client'
 import { authClient } from '@/lib/auth-client';
 import { useRouter } from 'next/navigation';
-import React from 'react';
+import React, { useState } from 'react';
 
 const ProfilePage = () => {
     const router = useRouter()
     const { data: session } = authClient.useSession()
     const user = session?.user
+
+   
+
+const [show, setShow] = useState(false)
 
     const handleSignOut = async () => {
         await authClient.signOut()
@@ -21,6 +25,10 @@ const ProfilePage = () => {
             ...newUserData,
         })
     }
+
+const handleShowForm = () => {
+    setShow(!show)
+}
 
     return (
         <div>
@@ -40,7 +48,10 @@ const ProfilePage = () => {
                 </button>
 
             </div>
-            <form onSubmit={handleUpdateProfile}>
+
+<button onClick={handleShowForm} className='btn'>Edit profile</button>
+
+         {show &&   <form onSubmit={handleUpdateProfile}>
 
                 <fieldset className="fieldset">
                     <label className="label" htmlFor="name">Name</label>
@@ -49,7 +60,7 @@ const ProfilePage = () => {
             Update Profile
           </button>
                 </fieldset>
-            </form>
+            </form>}
         </div>
     );
 };
