@@ -58,7 +58,7 @@ const Products = async() => {
 
 
       {/* all products */}
-      <div className="mt-10 mb-10">
+      <div className="mt-10 mb-10 scroll-mt-20" id="allProducts">
         <h2 className="text-2xl font-bold ">সব পণ্য</h2>
         <h2>মোট {data.length}টি পণ্য দেখানো হচ্ছে</h2>
         <div className="grid grid-cols-3 gap-4 mt-4">
