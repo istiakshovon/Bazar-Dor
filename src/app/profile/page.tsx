@@ -31,25 +31,30 @@ const ProfilePage = () => {
     }
 
     return (
-        <div>
+        <div className='bg-base-300'>
             <h2>আমার প্রোফাইল</h2>
             <h2>আপনার অ্যাকাউন্টের তথ্য এখানে দেখুন।</h2>
-            <div>
+            <div className='flex justify-between bg-base-200 p-4 rounded-2xl'>
+                <div className='flex'>
                 <div className="avatar">
                     <div className="w-24 rounded-xl">
                         <img alt={user?.name.charAt(0).toUpperCase()} src={user?.image as string} />
 
                     </div>
-                    <h2>{user?.name}</h2>
-                    <h2>{user?.email}</h2>
+                  
                 </div>
-                <button onClick={handleSignOut} className="btn btn-ghost">
-                    সাইন আউট
-                </button>
+                <div >  <h2>{user?.name}</h2>
+                    <h2>{user?.email}</h2></div>
+                
+
+            </div>
+<div><button onClick={handleSignOut} className="btn btn-outline btn-error">
+                   ↩ সাইন আউট
+                </button></div>
 
             </div>
 
-            <button onClick={handleShowForm} className='btn'>Edit profile</button>
+     <div className='flex justify-center'>       <button onClick={handleShowForm} className='btn m-4'>Edit profile</button></div>
 
             {show && <form onSubmit={handleUpdateProfile}>
 
