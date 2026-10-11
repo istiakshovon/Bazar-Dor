@@ -31,10 +31,10 @@ const ProfilePage = () => {
     }
 
     return (
-        <div className='bg-base-300'>
-            <h2>আমার প্রোফাইল</h2>
+        <div className='bg-base-300 p-3'>
+            <h2 className='text-2xl font-bold'>আমার প্রোফাইল</h2>
             <h2>আপনার অ্যাকাউন্টের তথ্য এখানে দেখুন।</h2>
-            <div className='flex justify-between bg-base-200 p-4 rounded-2xl'>
+            <div className='flex justify-between bg-base-200 p-4 rounded-2xl mt-5'>
                 <div className='flex'>
                 <div className="avatar">
                     <div className="w-24 rounded-xl">
@@ -43,7 +43,7 @@ const ProfilePage = () => {
                     </div>
                   
                 </div>
-                <div >  <h2>{user?.name}</h2>
+                <div className='mx-3'>  <h2 className='font-bold text-2xl'>{user?.name}</h2>
                     <h2>{user?.email}</h2></div>
                 
 
@@ -58,13 +58,16 @@ const ProfilePage = () => {
 
             {show && <form onSubmit={handleUpdateProfile}>
 
-                <fieldset className="fieldset">
-                    <label className="label" htmlFor="name">Name</label>
-                    <input type="text" id="name" className="input" placeholder="Name" name="name" />
-                    <button type="submit" className="btn">
-                        Update Profile
+               <div className='p-4 rounded-2xl bg-base-200'>
+                <h2 className='text-2xl font-bold mb-2'>তথ্য</h2>
+                 <fieldset className="fieldset">
+                    <label className="label" htmlFor="name">নাম</label>
+                    <input type="text" id="name" className="input w-full" placeholder="" name="name" />
+                    <button type="submit" className="btn bg-[#05893E] text-white">
+                       আপডেট 
                     </button>
                 </fieldset>
+               </div>
             </form>}
         </div>
     );

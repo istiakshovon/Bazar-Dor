@@ -24,15 +24,15 @@ const handleSignOut = async () => {
                             <h2>{user.name}</h2>
                         </div>
                         <ul tabIndex={-1} className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
-                            <h2>{user.name}</h2>
+                            <h2 className="font-bold text-2xl">{user.name}</h2>
                             <h2>{user.email}</h2>
                             <Link href={"/profile"}>
                                 <button className="btn btn-ghost">
                                     👤 আমার প্রোফাইল
                                 </button>
                             </Link>
-                            <button onClick={handleSignOut} className="btn btn-ghost">
-                                Sign Out
+                            <button onClick={handleSignOut} className="btn btn-ghost text-red-500">
+                               ↩ সাইন আউট
                             </button>
                         </ul>
                     </div>
@@ -42,7 +42,7 @@ const handleSignOut = async () => {
                         <button className="btn btn-ghost mx-5">সাইন ইন</button>
                     </Link>
                     <Link href={"/signup"}>
-                        <button className="btn btn-active btn-success bg-[#05893E]">সাইন আপ</button>
+                        <button className="btn btn-active btn-success bg-[#05893E] text-white">সাইন আপ</button>
                     </Link>
                 </div>
             }
