@@ -8,9 +8,9 @@ const ProfilePage = () => {
     const { data: session } = authClient.useSession()
     const user = session?.user
 
-   
 
-const [show, setShow] = useState(false)
+
+    const [show, setShow] = useState(false)
 
     const handleSignOut = async () => {
         await authClient.signOut()
@@ -20,15 +20,15 @@ const [show, setShow] = useState(false)
     const handleUpdateProfile = async (e: React.SubmitEvent<HTMLElement>) => {
         e.preventDefault()
         const formData = new FormData(e.target);
-        const newUserData = Object.fromEntries(formData.entries()) as {name: string}
+        const newUserData = Object.fromEntries(formData.entries()) as { name: string }
         await authClient.updateUser({
             ...newUserData,
         })
     }
 
-const handleShowForm = () => {
-    setShow(!show)
-}
+    const handleShowForm = () => {
+        setShow(!show)
+    }
 
     return (
         <div>
@@ -49,16 +49,16 @@ const handleShowForm = () => {
 
             </div>
 
-<button onClick={handleShowForm} className='btn'>Edit profile</button>
+            <button onClick={handleShowForm} className='btn'>Edit profile</button>
 
-         {show &&   <form onSubmit={handleUpdateProfile}>
+            {show && <form onSubmit={handleUpdateProfile}>
 
                 <fieldset className="fieldset">
                     <label className="label" htmlFor="name">Name</label>
-                    <input type="text" id="name" className="input" placeholder="Name" name = "name"/>
-                    <button type="submit" className="btn text-white bg-red-700 mt-4 ">
-            Update Profile
-          </button>
+                    <input type="text" id="name" className="input" placeholder="Name" name="name" />
+                    <button type="submit" className="btn">
+                        Update Profile
+                    </button>
                 </fieldset>
             </form>}
         </div>

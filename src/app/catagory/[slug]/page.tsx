@@ -12,7 +12,8 @@ const CatagoryPage = async ({ params }: CatagoryPageProps) => {
     const data = await res.json()
     return (
         <div>
-            <h2>{slug}</h2>
+           <span> {data.icon}</span>
+            <h2>{data.nameBn}</h2>
         </div>
     );
 };

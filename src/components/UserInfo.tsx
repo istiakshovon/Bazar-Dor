@@ -20,8 +20,9 @@ const handleSignOut = async () => {
                             <div className="w-10 rounded-full">
                                 <img alt={user?.name.charAt(0).toUpperCase()} src={user?.image as string} />
                             </div>
+                        </div>
                             <h2>{user.name}</h2>
-                        </div></div>
+                        </div>
                         <ul tabIndex={-1} className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
                             <h2>{user.name}</h2>
                             <h2>{user.email}</h2>
